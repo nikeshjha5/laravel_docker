@@ -1,0 +1,17 @@
+version: '2'
+
+services:
+   web:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: my-laravel-app
+    ports:
+      - "8080:80"
+    volumes:
+      - .:/var/www/html
+      - /var/www/html/storage
+      - /var/www/html/bootstrap/cache
+      - ./.docker/apache/default.conf:/etc/apache2/sites-enabled/000-default.conf
+    working_dir: /var/www/html
+    user: "www-data"
