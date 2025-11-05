@@ -14,4 +14,12 @@ class UserController extends Controller
 
         return view('users', compact('users'));
     }
+
+    public function create(){
+        User::create([
+            'name' => 'test',
+            'email' => 'test@gmail.com',
+            'password' => '123456',
+        ]);
+    }
 }
