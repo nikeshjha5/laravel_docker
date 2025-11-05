@@ -37,4 +37,9 @@ RUN chown -R www-data:www-data /var/www/html \
 
 EXPOSE 80
 
+# Ensure SQLite database exists and run migrations
+RUN touch /var/www/html/database/database.sqlite \
+    && php artisan migrate --force
+
+
 CMD ["apache2-foreground"]
