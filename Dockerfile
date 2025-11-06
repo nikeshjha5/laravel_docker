@@ -2,7 +2,7 @@ FROM php:8.3-apache
 
 WORKDIR /var/www/html
 
-# Install required packages including PostgreSQL dev
+# Install required packages including PostgreSQL driver
 RUN apt-get update && apt-get install -y \
     libzip-dev \
     unzip \
@@ -35,4 +35,5 @@ RUN chown -R www-data:www-data /var/www/html \
 
 EXPOSE 80
 
-CMD ["apache2-foreground"]
+# Auto run migrations when container starts
+CMD php artisan migrate --force && apache2-foreground
