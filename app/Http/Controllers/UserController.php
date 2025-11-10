@@ -17,8 +17,8 @@ class UserController extends Controller
 
     public function create(){
         User::create([
-            'name' => 'test',
-            'email' => 'test@gmail.com',
+            'name' => 'test' . rand(1, 20),
+            'email' => 'test' . rand(1, 1000) . '@gmail.com',
             'password' => '123456',
         ]);
     }
